@@ -16,4 +16,16 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    // Victor motor controllers
+	public static final int LEFT_FRONT_VICTORPORT = 0;
+	public static final int LEFT_BACK_VICTORPORT = 0;
+	public static final int RIGHT_FRONT_VICTORPORT = 0;
+    public static final int RIGHT_BACK_VICTORPORT = 0;
+    //Maximum acceleration for motors
+    public static final int maxSpeed = 0;
+    
+    // Joystick axis for movement
+	public static final int DRIVER_MOVE = null;
+	public static final int DRIVER_TURN = null;
 }
