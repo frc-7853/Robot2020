@@ -23,9 +23,11 @@ public final class Constants {
 	public static final int RIGHT_FRONT_VICTORPORT = 0;
     public static final int RIGHT_BACK_VICTORPORT = 0;
     //Maximum acceleration for motors
-    public static final int maxSpeed = 0;
+    public static final int maxDriveSpeed = 0;
+    public static final double shooterMotorSpeed = .5;
     
     // Joystick axis for movement
-	public static final int DRIVER_MOVE = null;
-	public static final int DRIVER_TURN = null;
+    public static final int DRIVER_CONTROLLER_PORT = 0;
+	public static final int DRIVER_MOVE = 1;
+	public static final int DRIVER_TURN = 4;
 }
