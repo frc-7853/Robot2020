@@ -19,11 +19,11 @@ public final class Constants {
 
     // Victor motor controllers
 	public static final int LEFT_FRONT_VICTORPORT = 0;
-	public static final int LEFT_BACK_VICTORPORT = 0;
-	public static final int RIGHT_FRONT_VICTORPORT = 0;
-    public static final int RIGHT_BACK_VICTORPORT = 0;
+	public static final int LEFT_BACK_VICTORPORT = 1;
+	public static final int RIGHT_FRONT_VICTORPORT = 2;
+    public static final int RIGHT_BACK_VICTORPORT = 3;
     //Maximum acceleration for motors
-    public static final int maxDriveSpeed = 0;
+    public static final double maxDriveSpeed = 0.6;
     public static final double shooterMotorSpeed = .5;
     
     // Joystick axis for movement
