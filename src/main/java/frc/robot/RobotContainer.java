@@ -26,21 +26,15 @@ public class RobotContainer {
 // The robot's subsystems and commands are defined here...
 
   private final Drivetrain drivetrain = new Drivetrain();
-
-  private final driveArcade driveArcade;
-
-  public final static Joystick driveController;
-
   
-
   /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
-    driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
+    Joystick driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
     configureButtonBindings();
-    driveArcade = new driveArcade(drivetrain);
+    new driveArcade(drivetrain, driveController);
 
   }
 
@@ -63,6 +57,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    // return m_autoCommand;
+    return null;
   }
 }

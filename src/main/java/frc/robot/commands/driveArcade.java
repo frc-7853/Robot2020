@@ -7,18 +7,21 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.Drivetrain;
 
 public class driveArcade extends CommandBase {
   /**
    * Creates a new driveArcade.
    */
-  private final Drivetrain m_drivetrain;
-  public driveArcade(Drivetrain drive) {
+  private Drivetrain m_drivetrain;
+  private Joystick m_stick;
+  public driveArcade(Drivetrain drive, Joystick stick) {
   // Use addRequirements() here to declare subsystem dependencies.
+    m_stick = stick;
     m_drivetrain = drive;
     addRequirements(m_drivetrain);
   }
@@ -26,19 +29,24 @@ public class driveArcade extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    System.out.println("Its on lmao");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double move = Constants.maxDriveSpeed * RobotContainer.driveController.getRawAxis(Constants.DRIVER_MOVE);
-    double turn = Constants.maxDriveSpeed * RobotContainer.driveController.getRawAxis(Constants.DRIVER_TURN);
+    double move = Constants.maxDriveSpeed * m_stick.getRawAxis(Constants.DRIVER_MOVE);
+    double turn = Constants.maxDriveSpeed * m_stick.getRawAxis(Constants.DRIVER_TURN);
     m_drivetrain.arcadeDrive(move, turn);
+    SmartDashboard.putNumber("Move Speed", move);
+    SmartDashboard.putNumber("Turn Speed", turn);
+    SmartDashboard.putNumber("Max Speed", Constants.maxDriveSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end(final boolean interrupted) {
+    m_drivetrain.arcadeDrive(0, 0);
   }
 
   // Returns true when the command should end.
