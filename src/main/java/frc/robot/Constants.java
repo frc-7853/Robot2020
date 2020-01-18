@@ -16,12 +16,13 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-
+    // Top = Front, Bottom = Back
+    // All tops are even all bottoms are odd
     // Victor motor controllers
-	public static final int LEFT_FRONT_VICTORPORT = 0;
-	public static final int LEFT_BACK_VICTORPORT = 1;
-	public static final int RIGHT_FRONT_VICTORPORT = 2;
-    public static final int RIGHT_BACK_VICTORPORT = 3;
+    public static final int RIGHT_FRONT_VICTORPORT = 0;
+    public static final int RIGHT_BACK_VICTORPORT = 1;
+	public static final int LEFT_FRONT_VICTORPORT = 2;
+	public static final int LEFT_BACK_VICTORPORT = 3;
     // Maximum acceleration for motors
     public static final double maxDriveSpeed = 0.6;
     public static final double shooterMotorSpeed = 0.01;
@@ -30,8 +31,7 @@ public final class Constants {
     public static final int DRIVER_CONTROLLER_PORT = 0;
 	public static final int DRIVER_MOVE = 1;
 	public static final int DRIVER_TURN = 4;
-    
     // Victor Shooter motor controllers
-    public static final int RIGHT_SHOOTER_MOTOR = 0;
-	public static final int LEFT_SHOOTER_MOTOR = 0;
+    public static final int LEFT_SHOOTER_MOTOR = 4;
+    public static final int RIGHT_SHOOTER_MOTOR = 5;
 }
