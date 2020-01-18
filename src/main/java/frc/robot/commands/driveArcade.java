@@ -7,7 +7,7 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -18,10 +18,10 @@ public class driveArcade extends CommandBase {
    * Creates a new driveArcade.
    */
   private Drivetrain m_drivetrain;
-  private Joystick m_stick;
-  public driveArcade(Drivetrain drive, Joystick stick) {
+  private XboxController m_controller;
+  public driveArcade(Drivetrain drive, XboxController controller) {
   // Use addRequirements() here to declare subsystem dependencies.
-    m_stick = stick;
+    m_controller = controller;
     m_drivetrain = drive;
     addRequirements(m_drivetrain);
   }
@@ -35,8 +35,8 @@ public class driveArcade extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double move = Constants.maxDriveSpeed * m_stick.getRawAxis(Constants.DRIVER_MOVE);
-    double turn = Constants.maxDriveSpeed * m_stick.getRawAxis(Constants.DRIVER_TURN);
+    double move = Constants.maxDriveSpeed * m_controller.getRawAxis(Constants.DRIVER_MOVE);
+    double turn = Constants.maxDriveSpeed * m_controller.getRawAxis(Constants.DRIVER_TURN);
     m_drivetrain.arcadeDrive(move, turn);
     SmartDashboard.putNumber("Move Speed", move);
     SmartDashboard.putNumber("Turn Speed", turn);
@@ -46,7 +46,7 @@ public class driveArcade extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(final boolean interrupted) {
-    m_drivetrain.arcadeDrive(0, 0);
+    // m_drivetrain.arcadeDrive(0, 0);
   }
 
   // Returns true when the command should end.

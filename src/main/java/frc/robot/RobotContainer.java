@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.driveArcade;
 import frc.robot.subsystems.Drivetrain;
@@ -26,15 +25,15 @@ public class RobotContainer {
 // The robot's subsystems and commands are defined here...
 
   private final Drivetrain drivetrain = new Drivetrain();
-  
+  private XboxController driveController;
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
-    Joystick driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
-    configureButtonBindings();
+    driveController = new XboxController(Constants.DRIVER_CONTROLLER_PORT);
     new driveArcade(drivetrain, driveController);
+    configureButtonBindings();
 
   }
 
@@ -46,7 +45,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    
+    driveController.getTriggerAxis(GenericHID.Hand.kRight);
   }
 
 
