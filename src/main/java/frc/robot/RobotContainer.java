@@ -7,11 +7,15 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.XboxController;
+
 import frc.robot.commands.driveArcade;
+import frc.robot.commands.shooterSetSpeed;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Shooter;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -25,16 +29,24 @@ public class RobotContainer {
 // The robot's subsystems and commands are defined here...
 
   private final Drivetrain drivetrain = new Drivetrain();
-  private XboxController driveController;
+  private final Shooter shooter = new Shooter();
+  //private XboxController driveController;
+  private Joystick driveController;
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
-    driveController = new XboxController(Constants.DRIVER_CONTROLLER_PORT);
-    new driveArcade(drivetrain, driveController);
-    configureButtonBindings();
+    //driveController = new XboxController(Constants.DRIVER_CONTROLLER_PORT);
+    driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
+    drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
+      () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
 
+    drivetrain.putData(driveController.getRawAxis(Constants.DRIVER_MOVE),
+      driveController.getRawAxis(Constants.DRIVER_TURN),Constants.maxDriveSpeed);
+    shooter.putData();;
+    configureButtonBindings();
+    
   }
 
 
@@ -45,7 +57,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    driveController.getTriggerAxis(GenericHID.Hand.kRight);
+    final JoystickButton aButton = new JoystickButton(driveController, Constants.A_BUTTON);
+    aButton.whileHeld(new shooterSetSpeed(shooter));
   }
 
 

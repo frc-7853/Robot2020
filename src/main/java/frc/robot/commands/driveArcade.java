@@ -7,8 +7,8 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
@@ -18,15 +18,17 @@ public class driveArcade extends CommandBase {
    * Creates a new driveArcade.
    */
   private Drivetrain m_drivetrain;
-  private XboxController m_controller;
-  public driveArcade(Drivetrain drive, XboxController controller) {
-  // Use addRequirements() here to declare subsystem dependencies.
-    m_controller = controller;
-    m_drivetrain = drive;
-    addRequirements(m_drivetrain);
-  }
+  private DoubleSupplier m_move;
+  private DoubleSupplier m_turn;
 
-  // Called when the command is initially scheduled.
+  public driveArcade(DoubleSupplier move, DoubleSupplier turn, Drivetrain drive) {
+    m_drivetrain = drive;
+    m_move = move;
+    m_turn = turn;
+    addRequirements(m_drivetrain);
+}
+
+// Called when the command is initially scheduled.
   @Override
   public void initialize() {
     System.out.println("Its on lmao");
@@ -35,18 +37,14 @@ public class driveArcade extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double move = Constants.maxDriveSpeed * m_controller.getRawAxis(Constants.DRIVER_MOVE);
-    double turn = Constants.maxDriveSpeed * m_controller.getRawAxis(Constants.DRIVER_TURN);
-    m_drivetrain.arcadeDrive(move, turn);
-    SmartDashboard.putNumber("Move Speed", move);
-    SmartDashboard.putNumber("Turn Speed", turn);
-    SmartDashboard.putNumber("Max Speed", Constants.maxDriveSpeed);
+    m_drivetrain.arcadeDrive(Constants.maxDriveSpeed * m_move.getAsDouble(),
+     Constants.maxDriveSpeed * m_turn.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(final boolean interrupted) {
-    // m_drivetrain.arcadeDrive(0, 0);
+    m_drivetrain.arcadeDrive(0, 0);
   }
 
   // Returns true when the command should end.

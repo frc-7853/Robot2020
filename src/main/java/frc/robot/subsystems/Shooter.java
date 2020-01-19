@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,6 +18,7 @@ public class Shooter extends SubsystemBase {
    */
   Victor rightShooterVictor;
   Victor leftShooterVictor;
+  private double speedinput;
 
   public Shooter() {
     rightShooterVictor = new Victor(Constants.RIGHT_SHOOTER_MOTOR);
@@ -24,8 +26,12 @@ public class Shooter extends SubsystemBase {
   }
 
   public void shoot(double speed){
+    speedinput = speed;
     rightShooterVictor.set(speed);
     leftShooterVictor.set(speed);
+  }
+  public void putData(){
+    SmartDashboard.putNumber("Moving Speed", speedinput);
   }
 
   @Override

@@ -34,4 +34,6 @@ public final class Constants {
     // Victor Shooter motor controllers
     public static final int LEFT_SHOOTER_MOTOR = 4;
     public static final int RIGHT_SHOOTER_MOTOR = 5;
+    // Controller Buttons
+	public static final int A_BUTTON = 0;
 }
