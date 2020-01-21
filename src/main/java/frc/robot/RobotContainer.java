@@ -44,7 +44,7 @@ public class RobotContainer {
 
     drivetrain.putData(driveController.getRawAxis(Constants.DRIVER_MOVE),
       driveController.getRawAxis(Constants.DRIVER_TURN),Constants.maxDriveSpeed);
-    shooter.putData();;
+    shooter.putData();
     configureButtonBindings();
     
   }
