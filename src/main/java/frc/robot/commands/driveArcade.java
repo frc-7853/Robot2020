@@ -21,6 +21,7 @@ public class driveArcade extends CommandBase {
   private DoubleSupplier m_move;
   private DoubleSupplier m_turn;
 
+
   public driveArcade(DoubleSupplier move, DoubleSupplier turn, Drivetrain drive) {
     m_drivetrain = drive;
     m_move = move;
@@ -31,13 +32,13 @@ public class driveArcade extends CommandBase {
 // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("Its on lmao");
+    System.out.println("The robot has initialized. Game on");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.arcadeDrive(Constants.maxDriveSpeed * m_move.getAsDouble(),
+    m_drivetrain.arcadeDrive(Constants.maxDriveSpeed * -m_move.getAsDouble(),
      Constants.maxDriveSpeed * m_turn.getAsDouble());
   }
 

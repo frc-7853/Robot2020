@@ -41,10 +41,11 @@ public class RobotContainer {
     driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
     drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
+    shooter.setDefaultCommand(new shooterSetSpeed(shooter, false));
 
     drivetrain.putData(driveController.getRawAxis(Constants.DRIVER_MOVE),
       driveController.getRawAxis(Constants.DRIVER_TURN),Constants.maxDriveSpeed);
-    shooter.putData();
+      shooter.putData();
     configureButtonBindings();
     
   }
@@ -58,7 +59,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     final JoystickButton aButton = new JoystickButton(driveController, Constants.A_BUTTON);
-    aButton.whileHeld(new shooterSetSpeed(shooter));
+    aButton.whileHeld(new shooterSetSpeed(shooter,true));
   }
 
 
