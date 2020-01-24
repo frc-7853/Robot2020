@@ -20,15 +20,15 @@ public class shooterSetSpeed extends CommandBase {
    */
   public shooterSetSpeed(Shooter shoot, boolean increaseSpeed) {
     if (increaseSpeed == true){
-      if(currentShooterSpeed != Constants.increasedShooterSpeed){
+      /*if(currentShooterSpeed != Constants.increasedShooterSpeed){
         currentShooterSpeed += 0.05;
-      }  
-      //currentShooterSpeed = Constants.increasedShooterSpeed;    
+      } */ 
+      currentShooterSpeed = Constants.increasedShooterSpeed;    
     }else{
-      if(currentShooterSpeed != Constants.increasedShooterSpeed){
+      /* if(currentShooterSpeed != Constants.increasedShooterSpeed){
         currentShooterSpeed -= 0.05;
-      }
-      //currentShooterSpeed = Constants.defaultShooterSpeed;
+      }*/
+      currentShooterSpeed = Constants.defaultShooterSpeed;
     }
     m_shooter = shoot;
     addRequirements(m_shooter);
