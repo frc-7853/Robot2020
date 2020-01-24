@@ -11,6 +11,7 @@ package frc.robot;
 
 import frc.robot.commands.driveArcade;
 import frc.robot.commands.shooterSetSpeed;
+import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Joystick;
@@ -30,6 +31,7 @@ public class RobotContainer {
 
   private final Drivetrain drivetrain = new Drivetrain();
   private final Shooter shooter = new Shooter();
+  private final ColorSensor colorsensor = new ColorSensor();
   //private XboxController driveController;
   private Joystick driveController;
   /**
@@ -42,10 +44,11 @@ public class RobotContainer {
     drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
     shooter.setDefaultCommand(new shooterSetSpeed(shooter, false));
-
     drivetrain.putData(driveController.getRawAxis(Constants.DRIVER_MOVE),
       driveController.getRawAxis(Constants.DRIVER_TURN),Constants.maxDriveSpeed);
-      shooter.putData();
+    // Puts all required data into the SmartDashboard
+    shooter.putData();
+    colorsensor.putData();
     configureButtonBindings();
     
   }

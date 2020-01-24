@@ -18,22 +18,39 @@ public class Shooter extends SubsystemBase {
    */
   Victor rightShooterVictor;
   Victor leftShooterVictor;
-  private double speedinput;
+  private double currentShooterSpeed = 0;
 
   public Shooter() {
     rightShooterVictor = new Victor(Constants.RIGHT_SHOOTER_MOTOR);
     leftShooterVictor = new Victor(Constants.LEFT_SHOOTER_MOTOR);
   }
 
-  public void shoot(double speed){
-    speedinput = speed;
+  public void shoot(boolean increaseSpeed){
+    if (increaseSpeed == true){
+      /*if(currentShooterSpeed != Constants.increasedShooterSpeed){
+        currentShooterSpeed += 0.05;
+      } */ 
+      currentShooterSpeed = Constants.increasedShooterSpeed;    
+    }else{
+      /* if(currentShooterSpeed != Constants.increasedShooterSpeed){
+        currentShooterSpeed -= 0.05;
+      }*/
+      currentShooterSpeed = Constants.defaultShooterSpeed;
+    }
+    set(currentShooterSpeed);
+  }
+  public void end()
+  {
+    set(0);
+  }
+  public void set(double speed){
     rightShooterVictor.set(-speed);
     leftShooterVictor.set(speed);
   }
   public void putData(){
-    SmartDashboard.putNumber("Moving Speed", speedinput);
+    SmartDashboard.putNumber("Moving Speed", currentShooterSpeed);
+    SmartDashboard.putNumber("Current Shooter Speed", currentShooterSpeed);
   }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

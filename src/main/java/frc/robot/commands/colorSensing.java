@@ -8,38 +8,37 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ColorSensor;
 
-public class shooterSetSpeed extends CommandBase {
-  private Shooter m_shooter;
-  private boolean increaseSpeed;
+public class colorSensing extends CommandBase {
   /**
-   * Creates a new shooterSetSpeed.
+   * Creates a new colorSensing.
    */
-  public shooterSetSpeed(Shooter shoot, boolean increaseSpeed) {
-    m_shooter = shoot;
-    increaseSpeed = this.increaseSpeed;
-    addRequirements(m_shooter);
+  private ColorSensor m_colorSensor;
+
+  public colorSensing(ColorSensor colorSensor) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_colorSensor = colorSensor;
+    addRequirements(m_colorSensor);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    System.out.println("Color is now being seen lmao");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.shoot(increaseSpeed);
-    m_shooter.putData();
+    m_colorSensor.colorMatch();
+    m_colorSensor.putData();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_shooter.end();
+    
   }
 
   // Returns true when the command should end.
