@@ -40,6 +40,8 @@ public class driveArcade extends CommandBase {
   public void execute() {
     m_drivetrain.arcadeDrive(Constants.maxDriveSpeed * -m_move.getAsDouble(),
      Constants.maxDriveSpeed * m_turn.getAsDouble());
+    m_drivetrain.putData();
+
   }
 
   // Called once the command ends or is interrupted.

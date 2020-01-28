@@ -43,13 +43,7 @@ public class RobotContainer {
     drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
     shooter.setDefaultCommand(new shooterSetSpeed(shooter, false));
-    drivetrain.putData(driveController.getRawAxis(Constants.DRIVER_MOVE),
-      driveController.getRawAxis(Constants.DRIVER_TURN),Constants.maxDriveSpeed);
     colorsensor.setDefaultCommand(new colorSensing(colorsensor));
-    // Puts all required data into the SmartDashboard
-    
-    shooter.putData();
-    colorsensor.putData();
     configureButtonBindings();
     
   }

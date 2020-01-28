@@ -7,14 +7,26 @@
 
 package frc.robot.subsystems.colorwheelsubsystem;
 
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class ColorWheelSpinner extends SubsystemBase {
   /**
    * Creates a new ColorWheelSpinner.
    */
+  Victor colorWheel;
+  double currentSpeed;
   public ColorWheelSpinner() {
-
+    colorWheel = new Victor(Constants.COLOR_WHEEL_MOTOR_PORT);
+  }
+  public void set(double speed){
+    colorWheel.set(speed);
+    currentSpeed = speed;
+  }
+  public void putData(){
+    SmartDashboard.putNumber("Color Wheel Speed", currentSpeed);
   }
 
   @Override

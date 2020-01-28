@@ -23,23 +23,27 @@ public class Drivetrain extends SubsystemBase {
   Victor rightFrontVictor;
   Victor rightBackVictor;
   DifferentialDrive drive;
+  double move;
+  double turn;
 
   public Drivetrain() {
-    leftFrontVictor = new Victor(Constants.LEFT_FRONT_VICTORPORT);
-    leftBackVictor = new Victor(Constants.LEFT_BACK_VICTORPORT);
-    rightFrontVictor = new Victor(Constants.RIGHT_FRONT_VICTORPORT);
-    rightBackVictor = new Victor(Constants.RIGHT_BACK_VICTORPORT);
+    leftFrontVictor = new Victor(Constants.LEFT_FRONT_PORT);
+    leftBackVictor = new Victor(Constants.LEFT_BACK_PORT);
+    rightFrontVictor = new Victor(Constants.RIGHT_FRONT_PORT);
+    rightBackVictor = new Victor(Constants.RIGHT_BACK_PORT);
     SpeedControllerGroup leftVictors = new SpeedControllerGroup(leftFrontVictor, leftBackVictor);
     SpeedControllerGroup rightVictors = new SpeedControllerGroup(rightFrontVictor, rightBackVictor);
     drive = new DifferentialDrive(leftVictors, rightVictors);
   }
   public void arcadeDrive(double moveSpeed, double turnSpeed){
     drive.arcadeDrive(moveSpeed, turnSpeed);
+    move = moveSpeed;
+    turn = turnSpeed;
   }
-  public void putData(double move, double turn, double max){
+  public void putData(){
     SmartDashboard.putNumber("Move Speed", Constants.maxDriveSpeed * move);
     SmartDashboard.putNumber("Turn Speed", Constants.maxDriveSpeed * turn);
-    SmartDashboard.putNumber("Max Speed", max);
+    SmartDashboard.putNumber("Max Speed", Constants.maxDriveSpeed);
   }
 
   @Override
