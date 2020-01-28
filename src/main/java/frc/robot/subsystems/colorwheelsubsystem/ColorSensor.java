@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.subsystems.colorwheelsubsystem;
 
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;

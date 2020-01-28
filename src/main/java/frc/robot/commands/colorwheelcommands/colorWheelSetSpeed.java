@@ -5,40 +5,32 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.colorwheelcommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ColorSensor;
+import frc.robot.commands.colorwheelcommands.colorWheelSetSpeed;
 
-public class colorSensing extends CommandBase {
+public class colorWheelSetSpeed extends CommandBase {
   /**
-   * Creates a new colorSensing.
+   * Creates a new colorWheelSetSpeed.
    */
-  private ColorSensor m_colorSensor;
-
-  public colorSensing(ColorSensor colorSensor) {
+  public colorWheelSetSpeed() {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_colorSensor = colorSensor;
-    addRequirements(m_colorSensor);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("Color is now being seen lmao");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_colorSensor.colorMatch();
-    m_colorSensor.putData();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
   }
 
   // Returns true when the command should end.

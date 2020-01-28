@@ -9,11 +9,10 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.XboxController;
 
-import frc.robot.commands.driveArcade;
-import frc.robot.commands.shooterSetSpeed;
-import frc.robot.subsystems.ColorSensor;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Shooter;
+import frc.robot.commands.*;
+import frc.robot.commands.colorwheelcommands.*;
+import frc.robot.subsystems.*;
+import frc.robot.subsystems.colorwheelsubsystem.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -46,7 +45,9 @@ public class RobotContainer {
     shooter.setDefaultCommand(new shooterSetSpeed(shooter, false));
     drivetrain.putData(driveController.getRawAxis(Constants.DRIVER_MOVE),
       driveController.getRawAxis(Constants.DRIVER_TURN),Constants.maxDriveSpeed);
+    colorsensor.setDefaultCommand(new colorSensing(colorsensor));
     // Puts all required data into the SmartDashboard
+    
     shooter.putData();
     colorsensor.putData();
     configureButtonBindings();
