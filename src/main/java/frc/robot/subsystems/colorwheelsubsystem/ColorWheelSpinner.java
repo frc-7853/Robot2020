@@ -18,6 +18,7 @@ public class ColorWheelSpinner extends SubsystemBase {
    */
   Victor colorWheel;
   double currentSpeed;
+  
   public ColorWheelSpinner() {
     colorWheel = new Victor(Constants.COLOR_WHEEL_MOTOR_PORT);
   }

@@ -31,6 +31,7 @@ public class RobotContainer {
   private final Drivetrain drivetrain = new Drivetrain();
   private final Shooter shooter = new Shooter();
   private final ColorSensor colorsensor = new ColorSensor();
+  private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
   //private XboxController driveController;
   private Joystick driveController;
   /**
@@ -42,7 +43,6 @@ public class RobotContainer {
     driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
     drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
-    shooter.setDefaultCommand(new shooterSetSpeed(shooter, false));
     colorsensor.setDefaultCommand(new colorSensing(colorsensor));
     configureButtonBindings();
     
@@ -58,6 +58,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     final JoystickButton aButton = new JoystickButton(driveController, Constants.A_BUTTON);
     aButton.whileHeld(new shooterSetSpeed(shooter,true));
+    final JoystickButton bButton = new JoystickButton(driveController, Constants.B_BUTTON);
+    bButton.whileHeld(new colorWheelSetSpeed(colorwheelspinner));
   }
 
 

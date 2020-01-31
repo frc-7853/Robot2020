@@ -25,17 +25,20 @@ public final class Constants {
     public static final int LEFT_BACK_PORT = 3;
     public static final int LEFT_SHOOTER_MOTOR = 4;
     public static final int RIGHT_SHOOTER_MOTOR = 5;
-    public static final int COLOR_WHEEL_MOTOR_PORT = 6; //not correct probably
+    public static final int COLOR_WHEEL_MOTOR_PORT = 6; // not correct probably
     // Maximum acceleration for motors
     public static final double maxDriveSpeed = 0.6;
 
     public static final double defaultShooterSpeed = 0.2;
     public static final double increasedShooterSpeed = 0.5;
+
+    public static final double colorWheelSpeed = 0.5;
     
     // Joystick axis for movement
     public static final int DRIVER_CONTROLLER_PORT = 0;
 	public static final int DRIVER_MOVE = 1;
 	public static final int DRIVER_TURN = 4;
     // Controller Buttons
-	public static final int A_BUTTON = 1;
+    public static final int A_BUTTON = 1;
+    public static final int B_BUTTON = 2;
 }

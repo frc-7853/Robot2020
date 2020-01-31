@@ -11,11 +11,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
 public class shooterSetSpeed extends CommandBase {
-  private final Shooter m_shooter;
-  private boolean increaseSpeed;
   /**
    * Creates a new shooterSetSpeed.
    */
+  private final Shooter m_shooter;
+  private boolean increaseSpeed;
+
   public shooterSetSpeed(final Shooter shoot, boolean increaseSpeed) {
     m_shooter = shoot;
     increaseSpeed = this.increaseSpeed;

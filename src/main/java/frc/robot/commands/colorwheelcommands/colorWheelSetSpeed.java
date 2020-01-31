@@ -8,21 +8,22 @@
 package frc.robot.commands.colorwheelcommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.commands.colorwheelcommands.colorWheelSetSpeed;
 import frc.robot.subsystems.colorwheelsubsystem.ColorWheelSpinner;
 
-public class colorWheelSetSpeed extends CommandBase {
+public class colorWheelSetSpeed extends CommandBase { 
   /**
    * Creates a new colorWheelSetSpeed.
    */
   private ColorWheelSpinner m_ColorWheelSpinner;
-  public colorWheelSetSpeed(ColorWheelSpinner colorspinner) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    m_ColorWheelSpinner = colorspinner;
-    addRequirements(m_ColorWheelSpinner);
-  }
 
-  // Called when the command is initially scheduled.
+  public colorWheelSetSpeed(ColorWheelSpinner colorwheelspinner) {
+    m_ColorWheelSpinner = colorwheelspinner;
+    addRequirements(m_ColorWheelSpinner);
+}
+
+// Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
@@ -30,12 +31,14 @@ public class colorWheelSetSpeed extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    m_ColorWheelSpinner.set(Constants.colorWheelSpeed);
+    m_ColorWheelSpinner.putData();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_ColorWheelSpinner.set(0);
   }
 
   // Returns true when the command should end.
