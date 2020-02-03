@@ -21,23 +21,29 @@ public class ColorSensor extends SubsystemBase {
    * Creates a new ColorSensor.
    */
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
-  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-  private final ColorMatch m_colorMatcher = new ColorMatch();
-  private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
-  private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
-  private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
-  private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
+  private final ColorSensorV3 m_colorSensor;
+  private final ColorMatch m_colorMatcher;
+  private final Color kBlueTarget;
+  private final Color kGreenTarget;
+  private final Color kRedTarget;
+  private final Color kYellowTarget;
   Color detectedColor;
   String colorString;
   ColorMatchResult match;
   public ColorSensor() {
+    m_colorSensor = new ColorSensorV3(i2cPort);
+    m_colorMatcher = new ColorMatch();
+    kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+    kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
+    kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
+    kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
     m_colorMatcher.addColorMatch(kYellowTarget);
   }
   public void colorMatch(){
-    Color detectedColor = m_colorSensor.getColor();
+    detectedColor = m_colorSensor.getColor();
     match = m_colorMatcher.matchClosestColor(detectedColor);
     if (match.color == kBlueTarget) {
       colorString = "Blue";

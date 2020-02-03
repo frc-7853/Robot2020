@@ -34,6 +34,7 @@ public class RobotContainer {
   private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
   //private XboxController driveController;
   private Joystick driveController;
+  // private Joystick operateController;
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -43,6 +44,7 @@ public class RobotContainer {
     driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
     drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
+    // operateController = new Joystick(Constants.OPERATOR_CONTROLLER_PORT);
     colorsensor.setDefaultCommand(new colorSensing(colorsensor));
     configureButtonBindings();
     

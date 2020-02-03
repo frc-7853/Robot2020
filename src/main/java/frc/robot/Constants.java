@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -26,6 +25,12 @@ public final class Constants {
     public static final int LEFT_SHOOTER_MOTOR = 4;
     public static final int RIGHT_SHOOTER_MOTOR = 5;
     public static final int COLOR_WHEEL_MOTOR_PORT = 6; // not correct probably
+    
+    
+    //Pneumatic Arm Constants
+    public static final int PNEUMATIC_ARM_FORWARD_CHANNEL = 0;
+    public static final int PNEUMATIC_ARM_REVERSE_CHANNEL = 1;
+    
     // Maximum acceleration for motors
     public static final double maxDriveSpeed = 0.6;
 
@@ -36,9 +41,14 @@ public final class Constants {
     
     // Joystick axis for movement
     public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final int OPERATOR_CONTROLLER_PORT = 1;
 	public static final int DRIVER_MOVE = 1;
 	public static final int DRIVER_TURN = 4;
     // Controller Buttons
     public static final int A_BUTTON = 1;
     public static final int B_BUTTON = 2;
-}
+    public static final int POVBUTTON_UP = 1;
+    public static final int POVBUTTON_DOWN = 5; 
+        //add button int for the D-pad
+        //this might be wrong for the POV buttons
+} 
