@@ -44,6 +44,9 @@ public class Shooter extends SubsystemBase {
     set(0);
   }
   public void set(double speed){
+  /*rightShooterVictor.setVoltage(-speed);
+    leftShooterVictor.setVoltage(speed);
+    */
     rightShooterVictor.set(-speed);
     leftShooterVictor.set(speed);
   }

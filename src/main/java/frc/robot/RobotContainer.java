@@ -16,6 +16,7 @@ import frc.robot.subsystems.colorwheelsubsystem.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -32,9 +33,10 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ColorSensor colorsensor = new ColorSensor();
   private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
+  private final Intake intake = new Intake();
   //private XboxController driveController;
   private Joystick driveController;
-  // private Joystick operateController;
+  private Joystick operateController;
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -44,7 +46,7 @@ public class RobotContainer {
     driveController = new Joystick(Constants.DRIVER_CONTROLLER_PORT);
     drivetrain.setDefaultCommand(new driveArcade(() -> driveController.getRawAxis(Constants.DRIVER_MOVE),
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
-    // operateController = new Joystick(Constants.OPERATOR_CONTROLLER_PORT);
+    operateController = new Joystick(Constants.OPERATOR_CONTROLLER_PORT);
     colorsensor.setDefaultCommand(new colorSensing(colorsensor));
     configureButtonBindings();
     
@@ -58,10 +60,14 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    final JoystickButton aButton = new JoystickButton(driveController, Constants.A_BUTTON);
-    aButton.whileHeld(new shooterSetSpeed(shooter,true));
-    final JoystickButton bButton = new JoystickButton(driveController, Constants.B_BUTTON);
-    bButton.whileHeld(new colorWheelSetSpeed(colorwheelspinner));
+    final JoystickButton aButtonDriver = new JoystickButton(driveController, Constants.A_BUTTON);
+    aButtonDriver.whileHeld(new shooterSetSpeed(shooter,true));
+    final JoystickButton bButtonDriver = new JoystickButton(driveController, Constants.B_BUTTON);
+    bButtonDriver.whileHeld(new colorWheelSetSpeed(colorwheelspinner));
+    
+    if(operateController.getRawAxis(Trigger) > .5){
+      intake.setDefaultCommand(new activateIntake(intake));
+    }
   }
 
 
