@@ -33,6 +33,8 @@ public final class Constants {
 
     public static final int PNEUMATIC_ARM_FORWARD_CHANNEL = 0;
     public static final int PNEUMATIC_ARM_REVERSE_CHANNEL = 1;
+    public static final int PNEUMATIC_ARM_SECOND_FOWARD_CHANNEL = 4;
+    public static final int PNEUMATIC_ARM_SECOND_REVERSE_CHANNEL = 5;
     
     // Maximum acceleration for motors
     public static final double maxDriveSpeed = 0.6;
