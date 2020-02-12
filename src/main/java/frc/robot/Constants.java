@@ -24,11 +24,13 @@ public final class Constants {
     public static final int LEFT_BACK_PORT = 3;
     public static final int LEFT_SHOOTER_MOTOR = 4;
     public static final int RIGHT_SHOOTER_MOTOR = 5;
-    public static final int COLOR_WHEEL_MOTOR_PORT = 6; // not correct probably
-    public static final int INTAKE_WHEEL_MOTOR_PORT = 0; // we need to add the port that spins the intake bar 
+    public static final int COLOR_WHEEL_MOTOR_PORT = 6;
+    public static final int INTAKE_WHEEL_MOTOR_PORT = 7; 
+    public static final int PNEUMATIC_ARM_PORT = 0; // find the port for the pneumatics cylinder 
     
     
     //Pneumatic Arm Constants
+
     public static final int PNEUMATIC_ARM_FORWARD_CHANNEL = 0;
     public static final int PNEUMATIC_ARM_REVERSE_CHANNEL = 1;
     
@@ -52,5 +54,4 @@ public final class Constants {
     public static final int POVBUTTON_DOWN = 5; 
         //add button int for the D-pad
         //this might be wrong for the POV buttons
-	public static final int RIGHT_TRIGGER = 0;
-} 
+    } 

@@ -5,17 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems.colorwheelsubsystem;
+/*package frc.robot.subsystems.colorwheelsubsystem;
 
-/*import edu.wpi.first.wpilibj.DoubleSolenoid;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 /**
  * Add your docs here.
  */
-/*
-public class pneumaticArm {
+
+/*public class pneumaticArm {
     private final DoubleSolenoid m_doubleSolenoid = new DoubleSolenoid(Constants.PNEUMATIC_ARM_FORWARD_CHANNEL, Constants.PNEUMATIC_ARM_REVERSE_CHANNEL);
-}
-*/
+}*/
+

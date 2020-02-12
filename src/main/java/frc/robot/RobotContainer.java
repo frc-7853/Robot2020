@@ -14,9 +14,10 @@ import frc.robot.commands.colorwheelcommands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.colorwheelsubsystem.*;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -64,10 +65,8 @@ public class RobotContainer {
     aButtonDriver.whileHeld(new shooterSetSpeed(shooter,true));
     final JoystickButton bButtonDriver = new JoystickButton(driveController, Constants.B_BUTTON);
     bButtonDriver.whileHeld(new colorWheelSetSpeed(colorwheelspinner));
-    
-    if(operateController.getRawAxis(Trigger) > .5){
-      intake.setDefaultCommand(new activateIntake(intake));
-    }
+    final JoystickButton bButtonOperator = new JoystickButton(operateController, Constants.B_BUTTON);
+    bButtonOperator.whileHeld(new activateIntake(intake));
   }
 
 
@@ -78,7 +77,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    // return m_autoCommand;
-    return null;
+    SendableChooser<Command> chooser = new SendableChooser<>();
+    chooser.setDefaultOption("Test Auto", new autoMove(drivetrain));
+    SmartDashboard.putData("Auto Mode", chooser);
+    return chooser.getSelected();
   }
 }
