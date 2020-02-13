@@ -35,6 +35,8 @@ public class RobotContainer {
   private final ColorSensor colorsensor = new ColorSensor();
   private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
   private final Intake intake = new Intake();
+  private final PneumaticsArm arm = new PneumaticsArm();
+  //controller
   //private XboxController driveController;
   private Joystick driveController;
   private Joystick operateController;
@@ -49,6 +51,7 @@ public class RobotContainer {
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
     operateController = new Joystick(Constants.OPERATOR_CONTROLLER_PORT);
     colorsensor.setDefaultCommand(new colorSensing(colorsensor));
+    arm.setDefaultCommand(new armStartup(arm, true));
     configureButtonBindings();
     
   }
