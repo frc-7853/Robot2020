@@ -70,6 +70,7 @@ public class RobotContainer {
 
     aButtonOperator.whileHeld(new shooting(shooter));
     bButtonOperator.whileHeld(new activateIntake(shooter, 0));
+    yButtonOperator.whileHeld(new armStartup(colorwheelspinner));
     if(lbButtonOperator.get() && bButtonOperator.get()){
       lbButtonOperator.whileHeld(new activateIntake(shooter, 1));
       bButtonOperator.whileHeld(new activateIntake(shooter, 1));
