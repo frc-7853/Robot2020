@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-//import edu.wpi.first.wpilibj.XboxController;
-
 import frc.robot.commands.*;
 import frc.robot.commands.colorwheelcommands.*;
 import frc.robot.subsystems.*;
@@ -34,10 +32,7 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ColorSensor colorsensor = new ColorSensor();
   private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
-  private final Intake intake = new Intake();
-  private final PneumaticsArm arm = new PneumaticsArm();
-  //controller
-  //private XboxController driveController;
+  //controllers
   private Joystick driveController;
   private Joystick operateController;
   /**
@@ -51,7 +46,6 @@ public class RobotContainer {
       () -> driveController.getRawAxis(Constants.DRIVER_TURN), drivetrain));
     operateController = new Joystick(Constants.OPERATOR_CONTROLLER_PORT);
     colorsensor.setDefaultCommand(new colorSensing(colorsensor));
-    arm.setDefaultCommand(new armStartup(arm, true));
     configureButtonBindings();
     
   }
@@ -64,12 +58,22 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    final JoystickButton aButtonDriver = new JoystickButton(driveController, Constants.A_BUTTON);
-    aButtonDriver.whileHeld(new shooterSetSpeed(shooter,true));
-    final JoystickButton bButtonDriver = new JoystickButton(driveController, Constants.B_BUTTON);
-    bButtonDriver.whileHeld(new colorWheelSetSpeed(colorwheelspinner));
+    //driver buttons
+
+    
+    //operator buttons    
+    final JoystickButton aButtonOperator = new JoystickButton(operateController, Constants.A_BUTTON);
     final JoystickButton bButtonOperator = new JoystickButton(operateController, Constants.B_BUTTON);
-    bButtonOperator.whileHeld(new activateIntake(intake));
+    final JoystickButton yButtonOperator = new JoystickButton(operateController, Constants.Y_BUTTON);
+    final JoystickButton lbButtonOperator = new JoystickButton(operateController, Constants.LB_BUTTON);
+    // Commands
+
+    aButtonOperator.whileHeld(new shooting(shooter));
+    bButtonOperator.whileHeld(new activateIntake(shooter, 0));
+    if(lbButtonOperator.get() && bButtonOperator.get()){
+      lbButtonOperator.whileHeld(new activateIntake(shooter, 1));
+      bButtonOperator.whileHeld(new activateIntake(shooter, 1));
+    }
   }
 
 

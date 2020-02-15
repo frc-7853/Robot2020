@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Encoder;
+
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -26,9 +26,8 @@ public class Drivetrain extends SubsystemBase {
   DifferentialDrive drive;
   double move;
   double turn;
-  private Encoder leftEncoder = new Encoder(0,1);
-  private Encoder rightEncoder = new Encoder(2,3);
-
+  
+  
   public Drivetrain() {
     leftFrontVictor = new Victor(Constants.LEFT_FRONT_PORT);
     leftBackVictor = new Victor(Constants.LEFT_BACK_PORT);

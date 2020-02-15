@@ -14,46 +14,49 @@ import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   /**
-   * Creates a new Shooter.
+   * Creates a new Intake.
    */
-  Victor rightShooterVictor;
-  Victor leftShooterVictor;
-  private double currentShooterSpeed = 0;
+  Victor intakeMotor;
+  Victor leftShooterMotor;
+  Victor rightShooterMotor;
+  double speed;
 
   public Shooter() {
-    rightShooterVictor = new Victor(Constants.RIGHT_SHOOTER_MOTOR);
-    leftShooterVictor = new Victor(Constants.LEFT_SHOOTER_MOTOR);
+    intakeMotor = new Victor(Constants.INTAKE_WHEEL_MOTOR_PORT);
+    leftShooterMotor = new Victor(Constants.LEFT_SHOOTER_MOTOR);
+    rightShooterMotor = new Victor(Constants.RIGHT_SHOOTER_MOTOR);
   }
 
-  public void shoot(boolean increaseSpeed){
-    if (increaseSpeed == true){
-      /*if(currentShooterSpeed != Constants.increasedShooterSpeed){
-        currentShooterSpeed += 0.05;
-      } */ 
-      currentShooterSpeed = Constants.increasedShooterSpeed;    
-    }else{
-      /* if(currentShooterSpeed != Constants.increasedShooterSpeed){
-        currentShooterSpeed -= 0.05;
-      }*/
-      currentShooterSpeed = Constants.defaultShooterSpeed;
+  // Foward is true, backwards is false
+  public void intakeMovement(int movement) {
+    if (movement == 0) {
+      set(intakeMotor, 0.3);
+    } else if (movement == 1) {
+      set(intakeMotor, -0.3);
+    } else {
+      set(intakeMotor, 0);
     }
-    set(currentShooterSpeed);
   }
-  public void end()
-  {
-    set(0);
+  public void shooter(boolean start){
+    if(start){
+      set(leftShooterMotor, 0.5);
+      set(rightShooterMotor, -0.5);
+    }else{
+      set(leftShooterMotor, 0);
+      set(rightShooterMotor, 0);
+    }
   }
-  public void set(double speed){
-  /*rightShooterVictor.setVoltage(-speed);
-    leftShooterVictor.setVoltage(speed);
-    */
-    rightShooterVictor.set(-speed);
-    leftShooterVictor.set(speed);
+
+  public void set(Victor motor, double speed){
+      motor.set(speed);
+      speed = this.speed;
   }
   public void putData(){
-    SmartDashboard.putNumber("Moving Speed", currentShooterSpeed);
-    SmartDashboard.putNumber("Current Shooter Speed", currentShooterSpeed);
+    SmartDashboard.putNumber("Intake Data", speed);
+    
   }
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

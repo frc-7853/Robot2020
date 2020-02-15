@@ -18,16 +18,14 @@ public final class Constants {
     // Top = Front, Bottom = Back
     // All tops are even all bottoms are odd
     // Victor Motor Controllers
-    public static final int RIGHT_FRONT_PORT = 0;
-    public static final int RIGHT_BACK_PORT = 1;
-	public static final int LEFT_FRONT_PORT = 2;
-    public static final int LEFT_BACK_PORT = 3;
-    public static final int LEFT_SHOOTER_MOTOR = 4;
-    public static final int RIGHT_SHOOTER_MOTOR = 5;
-    public static final int COLOR_WHEEL_MOTOR_PORT = 6;
-    public static final int INTAKE_WHEEL_MOTOR_PORT = 7; 
-    public static final int PNEUMATIC_ARM_PORT = 0; // find the port for the pneumatics cylinder 
-    
+    public static final int COLOR_WHEEL_MOTOR_PORT = 0;
+    public static final int LEFT_SHOOTER_MOTOR = 1;
+    public static final int RIGHT_SHOOTER_MOTOR = 2;
+    public static final int INTAKE_WHEEL_MOTOR_PORT = 3;
+    public static final int RIGHT_FRONT_PORT = 4;
+    public static final int RIGHT_BACK_PORT = 5;
+	public static final int LEFT_FRONT_PORT = 6;
+    public static final int LEFT_BACK_PORT = 7;     
     
     //Pneumatic Arm Constants
 
@@ -38,7 +36,6 @@ public final class Constants {
     
     // Maximum acceleration for motors
     public static final double maxDriveSpeed = 0.6;
-
     public static final double defaultShooterSpeed = 0.2;
     public static final double increasedShooterSpeed = 0.5;
 
@@ -52,8 +49,6 @@ public final class Constants {
     // Controller Buttons
     public static final int A_BUTTON = 1;
     public static final int B_BUTTON = 2;
-    public static final int POVBUTTON_UP = 1;
-    public static final int POVBUTTON_DOWN = 5; 
-        //add button int for the D-pad
-        //this might be wrong for the POV buttons
+    public static final int Y_BUTTON = 4;
+    public static final int LB_BUTTON = 5; //Might be 4, we need to check it when the robot is ready. 
     } 

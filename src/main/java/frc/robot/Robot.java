@@ -79,14 +79,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    /*double time = Timer.getFPGATimestamp();
 
-    if (time < 3) {
-      leftFrontVictor.set(0.5);
-      leftBackVictor.set(0.5);
-      rightFrontVictor.set(0.5);
-      rightBackVictor.set(0.5);
-    }*/
   }
 
   @Override
