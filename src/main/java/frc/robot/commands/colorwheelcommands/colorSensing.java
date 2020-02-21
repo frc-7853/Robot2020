@@ -32,7 +32,7 @@ public class colorSensing extends CommandBase {
   @Override
   public void execute() {
     m_colorSensor.colorMatch();
-    m_colorSensor.putData();
+    //m_colorSensor.putData();
   }
 
   // Called once the command ends or is interrupted.

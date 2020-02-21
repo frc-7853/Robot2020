@@ -9,20 +9,20 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
 
 public class activateIntake extends CommandBase {
   /**
    * Creates a new activateIntake.
    */
-  private final Shooter m_shooter;
+  private final Intake m_intake;
   private int direction;
   private double time;
-  public activateIntake(Shooter shooter, int movement) {
+  public activateIntake(Intake intake, int movement) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_shooter = shooter;
+    m_intake = intake;
     direction = movement;
-    addRequirements(m_shooter);
+    addRequirements();
   }
 
   // Called when the command is initially scheduled.
@@ -36,7 +36,7 @@ public class activateIntake extends CommandBase {
   public void execute() {
     time-= Timer.getFPGATimestamp();
     if(time < 2)
-    m_shooter.intakeMovement(direction);
+    m_intake.intakeMovement(direction);
     else{
       isFinished();
     }
@@ -45,7 +45,7 @@ public class activateIntake extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_shooter.intakeMovement(2);
+    m_intake.intakeMovement(2);
   }
 
   // Returns true when the command should end.

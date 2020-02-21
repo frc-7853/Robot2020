@@ -11,7 +11,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -41,11 +40,6 @@ public class Drivetrain extends SubsystemBase {
     drive.arcadeDrive(moveSpeed, turnSpeed);
     move = moveSpeed;
     turn = turnSpeed;
-  }
-  public void putData(){
-    SmartDashboard.putNumber("Move Speed", Constants.maxDriveSpeed * move);
-    SmartDashboard.putNumber("Turn Speed", Constants.maxDriveSpeed * turn);
-    SmartDashboard.putNumber("Max Speed", Constants.maxDriveSpeed);
   }
 
   @Override

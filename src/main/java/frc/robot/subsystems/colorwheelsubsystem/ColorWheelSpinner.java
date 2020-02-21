@@ -10,7 +10,6 @@ package frc.robot.subsystems.colorwheelsubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,8 +18,7 @@ public class ColorWheelSpinner extends SubsystemBase {
    * Creates a new ColorWheelSpinner.
    */
   private final Victor colorWheel;
-    private final DoubleSolenoid m_DoubleSolenoid;
-    private double currentSpeed;
+  private final DoubleSolenoid m_DoubleSolenoid;
 
 
   
@@ -31,11 +29,8 @@ public class ColorWheelSpinner extends SubsystemBase {
   }
   public void set(double speed){
     colorWheel.set(speed);
-    currentSpeed = speed;
-  }
-  public void putData(){
-    SmartDashboard.putNumber("Color Wheel Speed", currentSpeed);
-  }
+    }
+
   public void setOff(){
     m_DoubleSolenoid.set(Value.kOff);
   }

@@ -11,33 +11,30 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Shooter extends SubsystemBase {
+public class Intake extends SubsystemBase {
   /**
    * Creates a new Intake.
    */
-  Victor leftShooterMotor;
-  Victor rightShooterMotor;
-  double speed;
-
-  public Shooter() {
-    leftShooterMotor = new Victor(Constants.LEFT_SHOOTER_MOTOR);
-    rightShooterMotor = new Victor(Constants.RIGHT_SHOOTER_MOTOR);
+  private Victor intakeMotor;
+  private double speed;
+  public Intake() {
+    intakeMotor = new Victor(Constants.INTAKE_WHEEL_MOTOR_PORT);
   }
-  
-  public void shooter(boolean start){
-    if(start){
-      set(leftShooterMotor, 0.5);
-      set(rightShooterMotor, -0.5);
-    }else{
-      set(leftShooterMotor, 0);
-      set(rightShooterMotor, 0);
+
+  // Foward is true, backwards is false
+  public void intakeMovement(int movement) {
+    if (movement == 0) {
+      set(intakeMotor, 0.3);
+    } else if (movement == 1) {
+      set(intakeMotor, -0.3);
+    } else {
+      set(intakeMotor, 0);
     }
   }
-
   public void set(Victor motor, double speed){
-      motor.set(speed);
-      speed = this.speed;
-  }
+    motor.set(speed);
+    speed = this.speed;
+}
 
   @Override
   public void periodic() {

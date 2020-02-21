@@ -32,6 +32,7 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ColorSensor colorsensor = new ColorSensor();
   private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
+  private final Intake intake = new Intake();
   //controllers
   private Joystick driveController;
   private Joystick operateController;
@@ -67,13 +68,12 @@ public class RobotContainer {
     final JoystickButton yButtonOperator = new JoystickButton(operateController, Constants.Y_BUTTON);
     final JoystickButton lbButtonOperator = new JoystickButton(operateController, Constants.LB_BUTTON);
     // Commands
-
     aButtonOperator.whileHeld(new shooting(shooter));
-    bButtonOperator.whileHeld(new activateIntake(shooter, 0));
+    bButtonOperator.whileHeld(new activateIntake(intake, 0));
     yButtonOperator.whileHeld(new armStartup(colorwheelspinner));
     if(lbButtonOperator.get() && bButtonOperator.get()){
-      lbButtonOperator.whileHeld(new activateIntake(shooter, 1));
-      bButtonOperator.whileHeld(new activateIntake(shooter, 1));
+      lbButtonOperator.whileHeld(new activateIntake(intake, 1));
+      bButtonOperator.whileHeld(new activateIntake(intake, 1));
     }
   }
 
@@ -89,5 +89,5 @@ public class RobotContainer {
     chooser.setDefaultOption("Test Auto", new autoMove(drivetrain));
     SmartDashboard.putData("Auto Mode", chooser);
     return chooser.getSelected();
-  }
+}
 }
