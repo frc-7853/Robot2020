@@ -31,8 +31,6 @@ public final class Constants {
 
     public static final int PNEUMATIC_ARM_FORWARD_CHANNEL = 0;
     public static final int PNEUMATIC_ARM_REVERSE_CHANNEL = 1;
-    public static final int PNEUMATIC_ARM_SECOND_FOWARD_CHANNEL = 4;
-    public static final int PNEUMATIC_ARM_SECOND_REVERSE_CHANNEL = 5;
     
     // Maximum acceleration for motors
     public static final double maxDriveSpeed = 0.6;
@@ -49,6 +47,8 @@ public final class Constants {
     // Controller Buttons
     public static final int A_BUTTON = 1;
     public static final int B_BUTTON = 2;
+    public static final int X_BUTTON = 3;
     public static final int Y_BUTTON = 4;
-    public static final int LB_BUTTON = 5; //Might be 4, we need to check it when the robot is ready. 
+    public static final int LT_BUTTON = 5;
+    public static final int RT_BUTTON = 6; 
     } 

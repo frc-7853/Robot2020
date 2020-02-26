@@ -37,7 +37,7 @@ public class driveArcade extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.arcadeDrive(-m_move.getAsDouble(), m_turn.getAsDouble());
+    m_drivetrain.arcadeDrive(-m_move.getAsDouble() * 0.7, m_turn.getAsDouble() * 0.7);
    // m_drivetrain.putData();
 
   }

@@ -24,9 +24,9 @@ public class Intake extends SubsystemBase {
   // Foward is true, backwards is false
   public void intakeMovement(int movement) {
     if (movement == 0) {
-      set(intakeMotor, 0.3);
+      set(intakeMotor, .3);
     } else if (movement == 1) {
-      set(intakeMotor, -0.3);
+      set(intakeMotor, -.3);
     } else {
       set(intakeMotor, 0);
     }

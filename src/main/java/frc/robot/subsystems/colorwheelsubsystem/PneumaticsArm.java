@@ -6,27 +6,29 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems.colorwheelsubsystem;
-import edu.wpi.first.wpilibj.Victor;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class ColorWheelSpinner extends SubsystemBase {
+public class PneumaticsArm extends SubsystemBase {
   /**
-   * Creates a new ColorWheelSpinner.
+   * Creates a new PneumaticsArm.
    */
-  private final Victor colorWheel;
-
-  
-  public ColorWheelSpinner() {
-    colorWheel = new Victor(Constants.COLOR_WHEEL_MOTOR_PORT);
+  private final DoubleSolenoid m_arm;
+  public PneumaticsArm() {
+    m_arm = new DoubleSolenoid(Constants.PNEUMATIC_ARM_FORWARD_CHANNEL,Constants.PNEUMATIC_ARM_REVERSE_CHANNEL);
   }
-  public void set(double speed){
-    colorWheel.set(speed);
+  public void raiseArm(boolean raise){
+    if(raise){
+      m_arm.set(Value.kForward);
+    }else{
+      m_arm.set(Value.kReverse);
+    }
   }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
 }

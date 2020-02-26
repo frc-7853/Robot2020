@@ -7,47 +7,34 @@
 
 package frc.robot.commands.colorwheelcommands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.colorwheelsubsystem.ColorWheelSpinner;
 
-public class armStartup extends CommandBase {
+public class startArm extends CommandBase {
   /**
-   * Creates a new pneumaticsArm.
+   * Creates a new startArm.
    */
-  private final ColorWheelSpinner m_spinnerwheel;
-  private double time;
-  public armStartup(ColorWheelSpinner spinnerArm) {
+  private final ColorWheelSpinner m_arm;
+  public startArm(ColorWheelSpinner arm) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_spinnerwheel = spinnerArm;
-    addRequirements(m_spinnerwheel);
+    m_arm = arm;
+    addRequirements(m_arm);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    time = Timer.getFPGATimestamp();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    time-= Timer.getFPGATimestamp();
-    if(time < 2){
-      m_spinnerwheel.setControl(true);
-
-    }
-    m_spinnerwheel.setOff();
-    m_spinnerwheel.set(Constants.colorWheelSpeed);
+    m_arm.set(0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_spinnerwheel.set(0);
-    m_spinnerwheel.setControl(false);
-    m_spinnerwheel.setOff();
   }
 
   // Returns true when the command should end.

@@ -11,11 +11,13 @@ import frc.robot.commands.*;
 import frc.robot.commands.colorwheelcommands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.colorwheelsubsystem.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -32,6 +34,7 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ColorSensor colorsensor = new ColorSensor();
   private final ColorWheelSpinner colorwheelspinner = new ColorWheelSpinner();
+  private final PneumaticsArm arm = new PneumaticsArm();
   private final Intake intake = new Intake();
   //controllers
   private Joystick driveController;
@@ -62,19 +65,26 @@ public class RobotContainer {
     //driver buttons
 
     
-    //operator buttons    
+    // Operator buttons
+    // POV, up is 0, right is 90, down 180, left is 270
+    final POVButton dpadUpOperator = new POVButton(operateController, 0);
+    final POVButton dpadDownOperator = new POVButton(operateController, 180);
     final JoystickButton aButtonOperator = new JoystickButton(operateController, Constants.A_BUTTON);
     final JoystickButton bButtonOperator = new JoystickButton(operateController, Constants.B_BUTTON);
-    final JoystickButton yButtonOperator = new JoystickButton(operateController, Constants.Y_BUTTON);
-    final JoystickButton lbButtonOperator = new JoystickButton(operateController, Constants.LB_BUTTON);
+    //final JoystickButton xButton = new JoystickButton(operateController, Constants.X_BUTTON);
+    final JoystickButton ltButtonOperator = new JoystickButton(operateController, Constants.LT_BUTTON);
+    final JoystickButton rtButtonOperator = new JoystickButton(operateController, Constants.RT_BUTTON);
+
     // Commands
-    aButtonOperator.whileHeld(new shooting(shooter));
-    bButtonOperator.whileHeld(new activateIntake(intake, 0));
-    yButtonOperator.whileHeld(new armStartup(colorwheelspinner));
-    if(lbButtonOperator.get() && bButtonOperator.get()){
-      lbButtonOperator.whileHeld(new activateIntake(intake, 1));
-      bButtonOperator.whileHeld(new activateIntake(intake, 1));
-    }
+
+    rtButtonOperator.whileHeld(new shooting(shooter));
+    ltButtonOperator.whileHeld(new startArm(colorwheelspinner));
+    dpadDownOperator.whenPressed(new raiseArm(arm, true));
+    dpadUpOperator.whenPressed(new raiseArm(arm, false));
+    //xButton.whileHeld(new armStartup(pneumaticsArm, 2));
+    aButtonOperator.whileHeld(new activateIntake(intake, 0));
+    bButtonOperator.whileHeld(new activateIntake(intake, 1));
+    
   }
 
 
