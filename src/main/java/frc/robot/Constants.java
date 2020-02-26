@@ -37,7 +37,7 @@ public final class Constants {
     public static final double defaultShooterSpeed = 0.2;
     public static final double increasedShooterSpeed = 0.5;
 
-    public static final double colorWheelSpeed = 0.5;
+    public static final double colorWheelSpeed = 0.75;
     
     // Joystick axis for movement
     public static final int DRIVER_CONTROLLER_PORT = 0;
