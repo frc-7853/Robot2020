@@ -8,6 +8,7 @@
 package frc.robot;
 
 import frc.robot.commands.*;
+import frc.robot.commands.autoroutines.*;
 import frc.robot.commands.colorwheelcommands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.colorwheelsubsystem.*;
@@ -70,7 +71,6 @@ public class RobotContainer {
     final POVButton dpadDownOperator = new POVButton(operateController, 180);
     final JoystickButton aButtonOperator = new JoystickButton(operateController, Constants.A_BUTTON);
     final JoystickButton bButtonOperator = new JoystickButton(operateController, Constants.B_BUTTON);
-    //final JoystickButton xButton = new JoystickButton(operateController, Constants.X_BUTTON);
     final JoystickButton ltButtonOperator = new JoystickButton(operateController, Constants.LT_BUTTON);
     final JoystickButton rtButtonOperator = new JoystickButton(operateController, Constants.RT_BUTTON);
 
@@ -80,7 +80,6 @@ public class RobotContainer {
     ltButtonOperator.whileHeld(new startArm(colorwheelspinner, true));
     dpadDownOperator.whenPressed(new raiseArm(arm, false));
     dpadUpOperator.whenPressed(new raiseArm(arm, true));
-    //xButton.whileHeld(new armStartup(pneumaticsArm, 2));
     aButtonOperator.whileHeld(new activateIntake(intake, 0));
     bButtonOperator.whileHeld(new activateIntake(intake, 1));
     
@@ -96,6 +95,7 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     SendableChooser<Command> chooser = new SendableChooser<>();
     chooser.setDefaultOption("Test Auto", new autoMove(drivetrain));
+    chooser.addOption("Endless Shoot", new shooting(shooter));
     SmartDashboard.putData("Auto Mode", chooser);
     return chooser.getSelected();
 }
