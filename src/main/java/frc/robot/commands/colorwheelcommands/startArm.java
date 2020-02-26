@@ -14,10 +14,12 @@ public class startArm extends CommandBase {
   /**
    * Creates a new startArm.
    */
+  private boolean move;
   private final ColorWheelSpinner m_arm;
-  public startArm(ColorWheelSpinner arm) {
+  public startArm(ColorWheelSpinner arm, boolean move) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_arm = arm;
+    this.move = move;
     addRequirements(m_arm);
   }
 
@@ -29,12 +31,18 @@ public class startArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_arm.set(0.5);
+    if(move){
+      m_arm.set(0.5);
+
+    }else{
+      m_arm.set(0);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_arm.set(0);
   }
 
   // Returns true when the command should end.

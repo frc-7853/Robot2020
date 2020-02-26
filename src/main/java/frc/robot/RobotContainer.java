@@ -11,7 +11,6 @@ import frc.robot.commands.*;
 import frc.robot.commands.colorwheelcommands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.colorwheelsubsystem.*;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -78,9 +77,9 @@ public class RobotContainer {
     // Commands
 
     rtButtonOperator.whileHeld(new shooting(shooter));
-    ltButtonOperator.whileHeld(new startArm(colorwheelspinner));
-    dpadDownOperator.whenPressed(new raiseArm(arm, true));
-    dpadUpOperator.whenPressed(new raiseArm(arm, false));
+    ltButtonOperator.whileHeld(new startArm(colorwheelspinner, true));
+    dpadDownOperator.whenPressed(new raiseArm(arm, false));
+    dpadUpOperator.whenPressed(new raiseArm(arm, true));
     //xButton.whileHeld(new armStartup(pneumaticsArm, 2));
     aButtonOperator.whileHeld(new activateIntake(intake, 0));
     bButtonOperator.whileHeld(new activateIntake(intake, 1));
