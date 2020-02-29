@@ -1,3 +1,6 @@
 ﻿# Robot2020
  Featuring: 
-    Almost finished
+    Differential Drive Train
+    Shooter
+    Intake
+    Color Wheel Spinner w/ Pneumatic Arm
