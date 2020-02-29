@@ -33,7 +33,7 @@ public final class Constants {
     public static final int PNEUMATIC_ARM_REVERSE_CHANNEL = 1;
     
     // Maximum acceleration for motors
-    public static final double maxDriveSpeed = 0.6;
+    public static final double maxDriveSpeed = 0.7;
     public static final double defaultShooterSpeed = 0.2;
     public static final double increasedShooterSpeed = 0.5;
 

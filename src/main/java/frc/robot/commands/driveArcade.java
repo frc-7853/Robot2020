@@ -10,6 +10,7 @@ package frc.robot.commands;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
 
 public class driveArcade extends CommandBase {
@@ -37,9 +38,7 @@ public class driveArcade extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.arcadeDrive(-m_move.getAsDouble() * 0.7, m_turn.getAsDouble() * 0.7);
-   // m_drivetrain.putData();
-
+    m_drivetrain.arcadeDrive(-m_move.getAsDouble() * Constants.maxDriveSpeed, m_turn.getAsDouble() * Constants.maxDriveSpeed);
   }
 
   // Called once the command ends or is interrupted.

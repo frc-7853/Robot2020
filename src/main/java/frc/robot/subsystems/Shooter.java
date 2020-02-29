@@ -24,8 +24,8 @@ public class Shooter extends SubsystemBase {
     rightShooterMotor = new Victor(Constants.RIGHT_SHOOTER_MOTOR);
   }
   
-  public void shooter(boolean start){
-    if(start){
+  public void shooter(int start){
+    if(start == 0){
       set(leftShooterMotor, 0.5);
       set(rightShooterMotor, -0.5);
     }else{

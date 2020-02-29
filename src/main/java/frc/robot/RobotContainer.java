@@ -93,10 +93,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    SendableChooser<Command> chooser = new SendableChooser<>();
-    chooser.setDefaultOption("Test Auto", new autoMove(drivetrain));
-    chooser.addOption("Endless Shoot", new shooting(shooter));
-    SmartDashboard.putData("Auto Mode", chooser);
-    return chooser.getSelected();
+    return null;
 }
 }
